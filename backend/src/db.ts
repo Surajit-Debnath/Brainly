@@ -1,8 +1,9 @@
 import { model,Schema } from "mongoose";
 import mongoose from "mongoose";
+import { Mongodb_Url } from "./config.js";
 
 async function connect() {   
-await mongoose.connect("mongodb+srv://surajit9830debnath:c5rKNNcBK6SA2Zwl@cluster0.4vycq0x.mongodb.net/Brainly")
+await mongoose.connect(Mongodb_Url);
 console.log("Mongodb is connectd");
 }
 connect();
