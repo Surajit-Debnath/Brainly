@@ -8,7 +8,7 @@ export interface ButtonProps{
     text:string;
     startIcon?:ReactElement;
     endIcon?:ReactElement;
-    onClick:()=>void
+    onClick?:()=>void
 };
 const variantStyles={
     "primary":"bg-[#5046e4] text-white ",
@@ -22,6 +22,10 @@ const sizeStyles={
 const defaultStyles="rounded-md flex"
 export const Button=(props:ButtonProps)=>{
     return <button onClick={props.onClick} className={`${variantStyles[props.variant]} ${sizeStyles[props.size]} ${defaultStyles}`}>
-        {props.startIcon?<div className="flex flex-row gap-3 items-center">{props.startIcon}{props.text}</div>:<div>{props.text}</div>}{props.endIcon}
+        <div className="flex flex-row gap-3 items-center">
+            {props.startIcon}
+            {props.text}
+            {props.endIcon}
+        </div>
         </button>
 }
