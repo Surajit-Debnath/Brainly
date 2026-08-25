@@ -5,8 +5,19 @@ import { JWT_PASSWORD } from "./config.js";
 import { userMiddleware } from "./middleware.js";
 import { random } from "./utils.js";
 import mongoose from "mongoose";
+import { Mongodb_Url } from "./config.js";
 const app=express();
 
+async function start() {
+  try {
+    await mongoose.connect(Mongodb_Url);
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.error("MongoDB connection failed:", error);
+  }
+}
+
+start();
 
 
 app.use(express.json());

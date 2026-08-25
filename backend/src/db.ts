@@ -1,13 +1,5 @@
 import { model,Schema } from "mongoose";
 import mongoose from "mongoose";
-import { Mongodb_Url } from "./config.js";
-
-async function connect() {   
-await mongoose.connect(Mongodb_Url);
-console.log("Mongodb is connectd");
-}
-connect();
-
 
 const UserSchema=new Schema({
     username:{type:String,require:true},
