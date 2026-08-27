@@ -6,6 +6,7 @@ import { userMiddleware } from "./middleware.js";
 import { random } from "./utils.js";
 import mongoose from "mongoose";
 import { Mongodb_Url } from "./config.js";
+import cors from "cors";
 const app=express();
 
 async function start() {
@@ -21,7 +22,7 @@ start();
 
 
 app.use(express.json());
-
+app.use(cors());
 app.post("/api/v1/signup",async (req,res)=>{
     //Zod validation and hash the password
 const username=req.body.username;
@@ -42,7 +43,7 @@ try{
 
 })
 
-app.post("/api/v1/signin",async (req,res)=>{
+app.post("/api/v1/login",async (req,res)=>{
      const username=req.body.username;
      const password=req.body.password;
      const exsistingUser=await UserModel.findOne({
